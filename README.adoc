@@ -1,0 +1,37 @@
+= leaflet.pm cljs wrapped
+
+Provides externs and deps.cljs for leaflet.pm.
+
+Add to your deps.edn:
+
+[source,clojure]
+----
+com.github.SevereOverfl0w/leaflet.pm {:git/url "https://github.com/SevereOverfl0w/cljs-leaflet.pm.git" :sha "8036c460e2ccbf673f99be9227a10983e15179a0" :tag "v0.25.0-0"}
+----
+
+== Usage
+
+Add to your namespace:
+
+[source,clojure]
+----
+(ns hello-world.app
+  (:require
+    [leaflet :as L]
+    [leaflet.pm]))
+
+(let [map (L/map "map")]
+  (.enableDraw (.-pm map) "Rectangle" #js {}))
+----
+
+== Externs
+
+The externs are fairly incomplete and need more completion.
+Due to leaflet.pm, auto-generation has shown itself to be difficult.
+Currently I am pushing externs as they are required for myself.
+PRs will be gladly merged with little review if they add externs.
+
+== Updating leaflet.pm
+
+Run `./fetch-latest.sh` from the root directory of the repo.
+It will fetch & tag a new release.
